@@ -1,6 +1,6 @@
 {
   "development": {
-    "url": "postgres://pnmnsahd:DFjjxccR4bRosnZvBq4kFzmHyXZTS0Dk@hattie.db.elephantsql.com/pnmnsahd"
+    "url": "postgres://dtsmodgl:CstDKV4eMAup1r3Aa1Es8xhPP0QApnLW@castor.db.elephantsql.com/dtsmodgl"
   },
   "test": {
     "username": "root",
