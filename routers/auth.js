@@ -3,6 +3,8 @@ const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
+const Space = require("../models/").space;
+const Story = require("../models/").story;
 const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
@@ -17,11 +19,15 @@ router.post("/login", async (req, res, next) => {
         .send({ message: "Please provide both email and password" });
     }
 
-    const user = await User.findOne({ where: { email } });
+    // const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({
+      where: { email },
+      include: { model: Space, include: { model: Story } },
+    });
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(400).send({
-        message: "User with that email not found or password incorrect"
+        message: "User with that email not found or password incorrect",
       });
     }
 
@@ -44,9 +50,17 @@ router.post("/signup", async (req, res) => {
     const newUser = await User.create({
       email,
       password: bcrypt.hashSync(password, SALT_ROUNDS),
-      name
+      name,
     });
 
+    //include a new space on the signup
+    const newSpace = await Space.create({
+      title: `${newUser.name} SPACE CREATED WITH SIGNUP!`,
+      description: null,
+      backgroundColor: "#ffffff",
+      color: " #000000 ",
+      userId: newUser.id,
+    });
     delete newUser.dataValues["password"]; // don't send back the password hash
 
     const token = toJWT({ userId: newUser.id });
@@ -67,9 +81,17 @@ router.post("/signup", async (req, res) => {
 // - get the users email & name using only their token
 // - checking if a token is (still) valid
 router.get("/me", authMiddleware, async (req, res) => {
+  //  HERE WE ARE PASSING BACK THE STORY TOGHETER WITH THE USER
+  //REMENBER TO SEND SPACE  IN THE RES.STATUS 200 BELLOW
+
+  const space = await Space.findOne({
+    where: { userId: req.user.id },
+    include: [Story],
+  });
+
   // don't send back the password hash
   delete req.user.dataValues["password"];
-  res.status(200).send({ ...req.user.dataValues });
+  res.status(200).send({ ...req.user.dataValues, space });
 });
 
 module.exports = router;

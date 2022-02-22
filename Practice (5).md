@@ -114,12 +114,12 @@ You will be provided with a wireframe that shows an overview of the app along wi
 - space has many story
 
 | Criteria                                                                                          | Points |
-| ------------------------------------------------------------------------------------------------- | ------ |
-| Server contains sequelize models and migrations for Space & Story                                 | 2      |
-| Records should not be allowed to be created if the fields marked as required contain empty values | 2      |
-| User, Space and Story models are correctly related                                                | 2      |
-| Seeders are present to create at least 2 spaces and 4 stories                                     | 2      |
-| Total                                                                                             | 8      |
+| ------------------------------------------------------------------------------------------------- | ------ | --- |
+| Server contains sequelize models and migrations for Space & Story                                 | 2 ok   |
+| Records should not be allowed to be created if the fields marked as required contain empty values | 2 ok   |
+| User, Space and Story models are correctly related                                                | 2 ok   |
+| Seeders are present to create at least 2 spaces and 4 stories                                     | 2 ok   |
+| Total                                                                                             | 8      | 8   |
 
 ## Features
 
@@ -130,12 +130,12 @@ You will be provided with a wireframe that shows an overview of the app along wi
 - There is a button linking to the details of that space
 
 | Criteria                                                                | Points |
-| ----------------------------------------------------------------------- | ------ |
-| The frontend route `/` displays a list of spaces                        | 1      |
-| The spaces have a backgroundColor and color as specified by their users | 1      |
-| The data is managed using Redux                                         | 2      |
-| Each space has a `Visit space` button, it links to a space's details    | 1      |
-| Total                                                                   | 5      |
+| ----------------------------------------------------------------------- | ------ | --- |
+| The frontend route `/` displays a list of spaces                        | 1 ok   |
+| The spaces have a backgroundColor and color as specified by their users | 1 ok   |
+| The data is managed using Redux                                         | 2 ok   |
+| Each space has a `Visit space` button, it links to a space's details    | 1 ok   |
+| Total                                                                   | 5      | 5   |
 
 ### 2. As a user interested in people's lives, I want to read people's stories, so I can be informed
 
@@ -144,10 +144,10 @@ You will be provided with a wireframe that shows an overview of the app along wi
 
 | Criteria                                                                | Points |
 | ----------------------------------------------------------------------- | ------ |
-| The frontend route `/spaces/:id` displays a detail page for a space     | 1      |
-| The stories are displayed with a name, description and an image         | 1      |
-| The space and its stories are queried from the database using 1 query   | 2      |
-| The space has a backgroundColor and color as specified by their user    | 1      |
+| The frontend route `/spaces/:id` displays a detail page for a space     | 1 ok   |
+| The stories are displayed with a name, description and an image         | 1 ok   |
+| The space and its stories are queried from the database using 1 query   | 2 ok   |
+| The space has a backgroundColor and color as specified by their user    | 1 ok   |
 | The stories are displayed in order, from newest to oldest (`createdAt`) | 2      |
 | Total                                                                   | 7      |
 
@@ -162,9 +162,9 @@ You will be provided with a wireframe that shows an overview of the app along wi
 
 | Criteria                                                                                       | Points |
 | ---------------------------------------------------------------------------------------------- | ------ |
-| When a user sign's up a space is created and saved to the database with the correct attributes | 3      |
-| The space is sent in the response of `/signup` along with the new user                         | 1      |
-| The space is stored in the redux store in the frontend                                         | 1      |
+| When a user sign's up a space is created and saved to the database with the correct attributes | 3 ok   |
+| The space is sent in the response of `/signup` along with the new user                         | 1 ?    |
+| The space is stored in the redux store in the frontend                                         | 1 ok   |
 | Total                                                                                          | 5      |
 
 ### 4. As a logged in user I want to be able to view my space and delete my own stories
@@ -178,12 +178,12 @@ You will be provided with a wireframe that shows an overview of the app along wi
 
 | Criteria                                                                                                 | Points |
 | -------------------------------------------------------------------------------------------------------- | ------ |
-| You see a `My space` link in the navbar (but only when you're logged in)                                 | 1      |
-| When you click `My space` you see your space and your stories                                            | 1      |
-| Your space & stories are fetched using the `/me` and `/login` endpoints                                  | 2      |
-| Your space's details are managed by redux                                                                | 2      |
-| On `My space`, stories are displayed with a `Delete Story` button which lets them delete their own story | 2.5    |
-| The story is removed from the space without manually refreshing (CMD + R / CTRL + R)                     | 1.5    |
+| You see a `My space` link in the navbar (but only when you're logged in)                                 | 1 ok   |
+| When you click `My space` you see your space and your stories                                            | 1 ok   |
+| Your space & stories are fetched using the `/me` and `/login` endpoints                                  | 2 ? ok |
+| Your space's details are managed by redux                                                                | 2 ok   |
+| On `My space`, stories are displayed with a `Delete Story` button which lets them delete their own story | 2.5 ok |
+| The story is removed from the space without manually refreshing (CMD + R / CTRL + R)                     | 1.5 ok |
 | Total                                                                                                    | 10     |
 
 ### 5. As a logged in user I want to be able to post stories on space, so I can share my adventures with the world
@@ -195,13 +195,13 @@ You will be provided with a wireframe that shows an overview of the app along wi
 
 | Criteria                                                                            | Points |
 | ----------------------------------------------------------------------------------- | ------ |
-| There is a button with `Post a cool story bro` on `My space`                        | 0.5    |
-| Clicking the button makes a form appear with the correct inputs for posting a story | 1.5    |
-| When a user enters an imageUrl, they can see a preview of the image                 | 1      |
-| When the form is submitted a request is sent to the server to create the story      | 3      |
-| The request uses JWT authorization                                                  | 2      |
-| The user sees a success message if the story was posted successfully                | 1      |
-| The success message is an alert, confirm or prompt popup or console.log             | -1     |
+| There is a button with `Post a cool story bro` on `My space`                        | 0.5 ok |
+| Clicking the button makes a form appear with the correct inputs for posting a story | 1.5 ok |
+| When a user enters an imageUrl, they can see a preview of the image                 | 1 ?    |
+| When the form is submitted a request is sent to the server to create the story      | 3 ok   |
+| The request uses JWT authorization                                                  | 2 ?    |
+| The user sees a success message if the story was posted successfully                | 1 ok   |
+| The success message is an alert, confirm or prompt popup or console.log             | -1 ?   |
 | Total                                                                               | 9      |
 
 ### 6. As a logged in user I want to be able to edit my space, so I can express myself
@@ -215,11 +215,11 @@ You will be provided with a wireframe that shows an overview of the app along wi
 
 | Criteria                                                                                               | Points |
 | ------------------------------------------------------------------------------------------------------ | ------ |
-| There is a button with `Edit my space` on `My space` that makes a form appear                          | 1.5    |
-| The form has inputs for the spaces attributes                                                          | 0.5    |
+| There is a button with `Edit my space` on `My space` that makes a form appear                          | 1.5 ok |
+| The form has inputs for the spaces attributes                                                          | 0.5 ok |
 | The values in the form start as the current values for your space                                      | 2.5    |
-| When the form is submitted a request is sent to update the users space                                 | 2      |
-| The request makes use of JWT authorization                                                             | 1      |
+| When the form is submitted a request is sent to update the users space                                 | 2 ok   |
+| The request makes use of JWT authorization                                                             | 1 ok   |
 | The user can see the results of their update without manually refreshing (CMD + R / CTRL + R) the page | 2.5    |
 | Total                                                                                                  | 10     |
 
